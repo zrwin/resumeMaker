@@ -1,6 +1,6 @@
-import { SignIn } from '@clerk/clerk-react'
 import React from 'react'
-// import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
+import { SignIn } from '@clerk/clerk-react'
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react"
 
 function SignInPage() {
   return (
