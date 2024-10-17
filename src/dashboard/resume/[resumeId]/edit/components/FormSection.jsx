@@ -17,9 +17,15 @@ function FormSection() {
 
         </div>
        {/* Personal Details */}
-        <PersonalDetailsForm /> 
+       {
+        activeFormIndex===1 ? 
+        <PersonalDetailsForm /> : null
+       }
        {/* Summary */}
-
+       {/* {
+        activeFormIndex===2 ? 
+        <PersonalDetailsForm /> : null
+       } */}
        {/* {Work Experience} */}
 
        {/* {Education} */}

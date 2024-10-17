@@ -9,7 +9,7 @@ function SkillPreview({resumeInfo}) {
             <div className='flex justify-evenly font-normal text-xs' >
             
                 {resumeInfo?.skills.map((skill, ind)=>(
-                    <span>{skill.name }  </span>
+                    <span key={ind}>{skill.name }  </span>
                     ))}
             </div>
     </div>
