@@ -26,7 +26,6 @@ function ResumeCardItem({ resume }) {
             >
                 <div className='ml-2  flex 
                   items-center justify-center h-[120px]'>
-                    {/* <Notebook/> */}
                     <img src="/src/assets/resume.png" width={100} height={100} />
                 </div>
             </div>

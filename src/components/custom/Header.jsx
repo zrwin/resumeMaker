@@ -8,7 +8,7 @@ function Header() {
   const { user, isSignedIn } = useUser();
 
   return (
-    <div className='px-1 p-2 flex justify-between shadow-md'>
+    <div className='px-1 p-2 flex justify-between shadow-md text-black'>
       <img className='p-1' src="/logo.svg" height={40} width={40} />
 
       {
@@ -21,7 +21,11 @@ function Header() {
         </div>
           :
           <Link to={'auth/signIn'}>
-            <Button variant="outline">Get Started</Button>
+            <Button variant="outline" >
+              <div className='text-black'>
+                Get Started 
+              </div>
+              </Button>
           </Link>
       }
     </div>
