@@ -1,7 +1,7 @@
 export default{
-    firstName:'James',
-    lastName:'Carter',
-    jobTitle:'full stack developer',
+    firstName:'FirstName',
+    lastName:'LastName',
+    jobTitle:'Job Title',
     address:'525 N tryon Street, NC 28117',
     phone:'(123)-456-7890',
     email:'exmaple@gmail.com',

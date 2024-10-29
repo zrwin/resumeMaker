@@ -14,7 +14,7 @@ import { MoreVertical } from 'lucide-react';
 function ResumeCardItem({ resume }) {
     return (
 
-        <Link to={'/dashboard/resume/' + resume.documentId + "/edit"}>
+        <Link to={'/dashboard/resume/' + resume?.documentId + "/edit"}>
             <div className='p-14 mx-2 bg-gradient-to-b
             from-pink-100 via-purple-200 to-blue-200
             h-[205px] 
