@@ -33,6 +33,13 @@ body {
   min-height: 100vh;
 }
 
+input[type="date"]::-webkit-calendar-picker-indicator {
+
+  
+    content: url(./assets/calendar.png);
+  
+  }
+
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
@@ -57,7 +64,6 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
-
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -70,6 +76,8 @@ button:focus-visible {
     background-color: #000000;
   }
 }
+
+
 
 @layer base {
   :root {

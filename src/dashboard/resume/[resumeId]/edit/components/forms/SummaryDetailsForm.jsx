@@ -81,11 +81,11 @@ function SummaryDetailsForm({enableNext}) {
     <div>
         {
             aiGeneratedSummaryList&& <div>
-                <h2 className='font-bold text-lg'>Suggestions</h2>
+                <h2 className='font-bold text-lg mt-6'>Suggestions</h2>
                 {
                     aiGeneratedSummaryList.map((item, ind)=>(
                         <div>
-                            <h2 className='font-bold my-2 ' key={ind}>Level: {item?.experienceLevel}</h2>
+                            <h2 className='font-bold my-2 ' key={ind}>Level: {item?.experience_level}</h2>
                             <p >{item?.summary}</p>
                         </div>
                 ))}
