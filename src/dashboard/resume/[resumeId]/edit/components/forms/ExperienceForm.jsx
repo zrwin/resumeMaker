@@ -1,12 +1,7 @@
 import React, { useState } from 'react'
 import { Input } from '../../../../../../components/ui/input';
-import { Calendar } from "@/components/ui/calendar"
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover"
-import { CalendarIcon } from 'lucide-react';
+import {Button} from '@/components/ui/button'
+import RichTextEditor from './RichTextEditor';
 
 const formField = {
     title: '',
@@ -59,8 +54,14 @@ function ExperienceForm({enableNext}) {
                                 <Input type='date'  name='endDate' onChange={(e)=>handleChange(ind,e)}/>
                                 
                             </div>
- 
+                        <RichTextEditor/>
                         </div>
+                        
+                        <div>
+                            <Button variant="outline" className='text-primary' > +Add More Experience </Button>
+                            <Button> Save</Button>
+                        </div>
+
                     </div>
                 ))
             }
