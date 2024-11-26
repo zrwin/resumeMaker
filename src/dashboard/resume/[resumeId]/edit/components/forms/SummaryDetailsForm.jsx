@@ -32,6 +32,7 @@ function SummaryDetailsForm({enableNext}) {
             ...resumeInfo,
             summary: summary
         })
+        enableNext(true);
     }, [summary])
 
     const onSave = (e)=>{
@@ -45,8 +46,6 @@ function SummaryDetailsForm({enableNext}) {
         console.log("meee");
         
         GlobalApi.UpdateResumeDetail(params?.resumeId, data).then(resp=>{
-          console.log("bye");
-          console.log(resp);
           enableNext(true);
           setLoading(false);
           toast("Details updated.")

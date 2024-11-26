@@ -7,7 +7,7 @@ import ExperienceForm from './forms/ExperienceForm'
 function FormSection() {
 
   const [activeFormIndex, setActiveIndexForm]= useState(1)
-  const [enableNext ,setEnableNext]  = useState(false)  
+  const [enableNext ,setEnableNext]  = useState(true)  
   return (
     <div>
       <div className='flex justify-between'>

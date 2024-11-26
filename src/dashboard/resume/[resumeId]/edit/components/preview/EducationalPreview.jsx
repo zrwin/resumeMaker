@@ -13,7 +13,7 @@ function EducationalPreview({resumeInfo}) {
                     <h2 className='flex justify-between text-xs font-normal' >{education?.degree} in {education?.major}
                     <span style={{ color: resumeInfo?.themeColor }}>{education?.startDate} - {education?.endDate}</span>
                     </h2>
-                    <p className='text-xs font-normal my-2'>{education?.description}</p>
+                    <p className='text-sm font-normal my-2'>{education?.description}</p>
                 </div>
             ))}
         </div>
