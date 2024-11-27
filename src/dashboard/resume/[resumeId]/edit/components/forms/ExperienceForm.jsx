@@ -49,6 +49,7 @@ function ExperienceForm({ enableNext }) {
         const newEntries= experienceList.slice();
         newEntries[ind][name]= e.target.value;
         setExperienceList(newEntries);
+        
     }
 
     const handleSubmit = (e)=>{

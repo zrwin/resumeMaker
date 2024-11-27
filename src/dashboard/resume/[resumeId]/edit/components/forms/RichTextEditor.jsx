@@ -1,4 +1,4 @@
-import { Brain } from 'lucide-react';
+import { Brain, LoaderCircle } from 'lucide-react';
 import React, { useContext, useState } from 'react'
 import { Button } from '@/components/ui/button'
 import {
@@ -27,9 +27,11 @@ const PROMPT = "position title: {title} , depending on position title give 5-7 b
 
 function RichTextEditor({ index, onRichEditorTextChange }) {
   const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext)
-  const [value, setValue] = useState();
+  const [value, setValue] = useState('<ul> <li>Designed, developed, and maintained full-stack web applications using a variety of technologies including [List specific technologies e.g., React, Node.js, Python, SQL, etc.].</li> <li>Developed and implemented RESTful APIs to connect front-end applications with back-end services, ensuring efficient data transfer and scalability.</li> </ul>');
   const [aiGeneratedSummaryList, setAiGeneratedSummaryList]= useState();
   const [loading,setLoading] = useState(false);
+
+
   const GenerateExperienceSummaryFromAI = async() => {
     setLoading(true);
     if (!resumeInfo.experience[index].title) {
@@ -38,9 +40,14 @@ function RichTextEditor({ index, onRichEditorTextChange }) {
     }
     const prompt = PROMPT.replace('{title}', resumeInfo.experience[index].title)
     const result = await chatSession.sendMessage(prompt);
-    console.log(JSON.parse(result.response.text()))
+    const resp = JSON.parse(result.response.text());
+    console.log(resp);
     setAiGeneratedSummaryList(JSON.parse(result.response.text()))
+    setValue(resp.resume_summary.join("\n"))
+    console.log("hi");
+    console.log(resp.resume_summary);
     setLoading(false);
+    
   }
 
   return (
@@ -49,12 +56,21 @@ function RichTextEditor({ index, onRichEditorTextChange }) {
         <label className='text-sm pt-2.5'>Summary</label>
         <Button variant="outline" size='sm' className=' text-xs flex  gap-2 text-black mb-2'
           onClick={GenerateExperienceSummaryFromAI}
-        ><Brain />Generate with AI</Button>
+        >
+          {
+            loading?
+            <LoaderCircle className='animate-spin'/> : 
+            <>
+              <Brain />Generate with AI
+            </>
+          }  
+          </Button>
       </div>
       <EditorProvider>
         <Editor value={value} onChange={(e) => {
-          setValue(e.target.value)
+          setValue(e.target.value)  
           onRichEditorTextChange(e)
+          
         }}>
           <Toolbar>
             <BtnUndo />

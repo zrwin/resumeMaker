@@ -11,8 +11,6 @@ function Edit() {
     console.log(params.resumeId);
     useEffect(()=>{
         GlobalApi.GetUserResumeUsingResumeId(params?.resumeId).then(resp=>{
-          console.log("edit index.js")
-          console.log(resp.data.data);
           setResumeInfo(dummyData);
         }, (err)=>{
           console.log(err)
