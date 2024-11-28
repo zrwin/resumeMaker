@@ -33,11 +33,9 @@ function AddResume() {
           userName: user.fullName
         }
       }
-      GlobalApi.CreateNewResume(data).then((resp)=>{
+    await GlobalApi.CreateNewResume(data).then((resp)=>{
         if(resp){
           setLoading(false)
-          console.log("pglaaaaaaaaaaaaaaaaaaaaaa reeeeeeeeeeeeeee pglaaaaaaaaaaaaaaaaaa")
-          console.log(resp);
           navigation('/dashboard/resume/'+resp.data.data.documentId+'/edit')
         }
       }, (err)=>{

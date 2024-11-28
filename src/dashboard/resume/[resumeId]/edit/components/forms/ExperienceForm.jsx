@@ -5,6 +5,8 @@ import RichTextEditor from './RichTextEditor';
 import { ResumeInfoContext } from '../../../../../../context/ResumeInfoContext';
 import { LoaderCircle } from 'lucide-react';
 import { toast } from 'sonner';
+import GlobalApi from '../../../../../../../service/GlobalApi';
+import { useParams } from 'react-router-dom';
 
 const formField = {
     title: '',
@@ -23,7 +25,7 @@ function ExperienceForm({ enableNext }) {
     const [experienceList, setExperienceList] = useState([
         formField
     ]);
-    
+    const params =useParams();
     const handleChange = (ind, e) => {
         enableNext(false);
         const {name,value} = e.target; 
@@ -54,10 +56,23 @@ function ExperienceForm({ enableNext }) {
 
     const handleSubmit = (e)=>{
         setLoading(true);
-        console.log("Called");
+        console.log("HandleSubmit");
         setResumeInfo({
             ...resumeInfo,
             experienceList 
+        })
+        const data= {
+            data: {
+                experience: {...experienceList}
+            }
+        }
+        GlobalApi.UpdateResumeDetail(params?.resumeId , data).then(resp=>{
+            if(resp){
+                console.log("success");
+                enableNext(true);
+                console.log(resp);
+                setLoading(false);
+            }
         })
     }
 
@@ -107,7 +122,7 @@ function ExperienceForm({ enableNext }) {
 
                             </div>
                             <div className="col-span-2">
-                                <RichTextEditor index={ind}  onRichEditorTextChange={(e)=>{handleRTEChange(e,"worksummary",ind)}}/>
+                                <RichTextEditor index={ind}  onRichEditorTextChange={(e)=>{handleRTEChange(e,"workSummary",ind)}}/>
                             </div>
                         </div>
                     </div>

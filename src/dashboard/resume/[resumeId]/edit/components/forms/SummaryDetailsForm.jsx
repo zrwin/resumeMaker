@@ -53,6 +53,7 @@ function SummaryDetailsForm({enableNext}) {
         },(error)=>{
           setLoading(true);
           console.log(data);
+          console.log("pglaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
         })
     }   
 
@@ -83,7 +84,7 @@ function SummaryDetailsForm({enableNext}) {
                 <h2 className='font-bold text-lg mt-6'>Suggestions</h2>
                 {
                     aiGeneratedSummaryList.map((item, ind)=>(
-                        <div>
+                        <div key={ind}>
                             <h2 className='font-bold my-2 ' key={ind}>Level: {item?.experience_level}</h2>
                             <p >{item?.summary}</p>
                         </div>

@@ -1,12 +1,19 @@
 import React from 'react'
+import dummyData from '@/data/dummyData.jsx'
 
 function WorkExperience({ resumeInfo }) {
+
+    if(! resumeInfo?.experience){
+        resumeInfo = dummyData
+    }
+
     return (
         <div className='my-5'>
             <h2 className='text-center font-bold text-sm mb-2'
                 style={{ color: resumeInfo?.themeColor }}>Professional Experience</h2>
             <hr className='border-[1.5px] my-2' />
-            {resumeInfo?.experience.map((experience, ind) => (
+            {
+            resumeInfo?.experience.map((experience, ind) => (
                 
                 <div key={ind}>
                     <h2 className='text-sm font-bold' style={{ color: resumeInfo?.themeColor }}>{experience?.title}</h2>
@@ -17,13 +24,14 @@ function WorkExperience({ resumeInfo }) {
                         {experience?.worksummary}
                     </p> */}
                     <div className='text-sm' dangerouslySetInnerHTML={{
-                        __html: experience?.worksummary
+                        __html: experience?.workSummary
                     }}>
 
                     </div>
                 </div>
 
-            ))}
+            )) 
+            }
         </div>
     )
 }

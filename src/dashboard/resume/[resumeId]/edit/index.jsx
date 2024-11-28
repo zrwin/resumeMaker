@@ -7,11 +7,16 @@ import dummyData from '@/data/dummyData.jsx'
 import GlobalApi from '../../../../../service/GlobalApi'
 function Edit() {
     const params =useParams()
+    
     const [resumeInfo, setResumeInfo]= useState();
-    console.log(params.resumeId);
+    console.log(params);
     useEffect(()=>{
-        GlobalApi.GetUserResumeUsingResumeId(params?.resumeId).then(resp=>{
-          setResumeInfo(dummyData);
+      GlobalApi.GetUserResumeUsingResumeId(params?.documentId).then(resp=>{
+          console.log(resp.data.data[0]);
+          console.log("hiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii")
+          
+          
+          setResumeInfo(resp.data.data[0]);
         }, (err)=>{
           console.log(err)
         })

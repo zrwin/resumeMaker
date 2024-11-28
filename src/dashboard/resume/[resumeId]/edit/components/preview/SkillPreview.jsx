@@ -8,9 +8,12 @@ function SkillPreview({resumeInfo}) {
             <hr className='border-[1.5px] my-2' />
             <div className='flex justify-evenly font-normal text-xs' >
             
-                {resumeInfo?.skills.map((skill, ind)=>(
+                {resumeInfo?.skills?
+                resumeInfo?.skills.map((skill, ind)=>(
                     <span key={ind}>{skill.name }  </span>
-                    ))}
+                    )) 
+                    : "Please Add skills"
+                  }
             </div>
     </div>
 
