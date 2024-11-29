@@ -66,14 +66,15 @@ function ExperienceForm({ enableNext }) {
                 experience: {...experienceList}
             }
         }
-        GlobalApi.UpdateResumeDetail(params?.resumeId , data).then(resp=>{
-            if(resp){
-                console.log("success");
-                enableNext(true);
-                console.log(resp);
-                setLoading(false);
-            }
-        })
+        console.log(data);
+        // GlobalApi.UpdateResumeDetail(params?.documentId , data).then(resp=>{
+        //     if(resp){
+        //         console.log("success");
+        //         enableNext(true);
+        //         console.log(resp);
+        //         setLoading(false);
+        //     }
+        // })
     }
 
 

@@ -15,7 +15,7 @@ function SummaryDetailsForm({enableNext}) {
     const [summary, setSummary] = useState();
     const params= useParams();
     const [loading,setLoading] = useState(false);
-    const [aiGeneratedSummaryList, setAiGeneratedSummaryList]= useState();
+    const [aiGeneratedSummaryList, setAiGeneratedSummaryList]= useState([]);
     const prompt="Job Title: {jobTitle} , Depends on job title give me list of  summery for 3 experience level, Mid Level and Freasher level in 3 -4 lines in array format, With summery and experience_level Field in JSON Format"
 
     const GenerateSummaryFromAI = async()=>{
@@ -25,6 +25,7 @@ function SummaryDetailsForm({enableNext}) {
         const result =await chatSession.sendMessage(PROMPT);
         console.log(JSON.parse(result.response.text()))
         setAiGeneratedSummaryList(JSON.parse(result.response.text()))
+        console.log(aiGeneratedSummaryList);
         setLoading(false);
     }
     useEffect(()=>{
@@ -45,7 +46,7 @@ function SummaryDetailsForm({enableNext}) {
         }
         console.log("meee");
         
-        GlobalApi.UpdateResumeDetail(params?.resumeId, data).then(resp=>{
+        GlobalApi.UpdateResumeDetail(params?.documentId, data).then(resp=>{
           enableNext(true);
           setLoading(false);
           toast("Details updated.")
@@ -53,7 +54,6 @@ function SummaryDetailsForm({enableNext}) {
         },(error)=>{
           setLoading(true);
           console.log(data);
-          console.log("pglaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
         })
     }   
 
