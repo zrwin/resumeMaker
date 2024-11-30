@@ -12,7 +12,7 @@ function Edit() {
     console.log(params);
     useEffect(()=>{
       GlobalApi.GetUserResumeUsingResumeId(params?.documentId).then(resp=>{
-          console.log(resp.data.data[0]);
+          console.log(resp.data.data);
           console.log("hiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii")
           
           

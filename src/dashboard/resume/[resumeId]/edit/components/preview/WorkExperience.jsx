@@ -7,16 +7,23 @@ function WorkExperience({ resumeInfo }) {
         console.log('inside if')
         resumeInfo = dummyData
         console.log(resumeInfo)
-    }
-    console.log("workexp preview");
-    console.log(resumeInfo);
+    }   
+    
+    const experienceList = resumeInfo.experience;
+
+    // const convertToArray =(experience)=>{
+    //     Object.entries(experience).forEach((key, value)=>{
+    //         experienceList[key] = value;
+    //     })
+    // }
+    // convertToArray(resumeInfo?.experience);
     return (
         <div className='my-5'>
             <h2 className='text-center font-bold text-sm mb-2'
                 style={{ color: resumeInfo?.themeColor }}>Professional Experience</h2>
             <hr className='border-[1.5px] my-2' />
             {
-            resumeInfo?.experience.map((experience, ind) => (
+            Object.values(experienceList).map((experience, ind) => (
                 
                 <div key={ind}>
                     <h2 className='text-sm font-bold' style={{ color: resumeInfo?.themeColor }}>{experience?.title}</h2>

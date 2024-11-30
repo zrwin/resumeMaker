@@ -67,14 +67,14 @@ function ExperienceForm({ enableNext }) {
             }
         }
         console.log(data);
-        // GlobalApi.UpdateResumeDetail(params?.documentId , data).then(resp=>{
-        //     if(resp){
-        //         console.log("success");
-        //         enableNext(true);
-        //         console.log(resp);
-        //         setLoading(false);
-        //     }
-        // })
+        GlobalApi.UpdateResumeDetail(params?.documentId , data).then(resp=>{
+            if(resp){
+                console.log("success");
+                enableNext(true);
+                console.log(resp);
+                setLoading(false);
+            }
+        })
     }
 
 
