@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowRight } from 'lucide-react'
 import {Button} from '@/components/ui/button'
 import SummaryDetailsForm from './forms/SummaryDetailsForm'
 import ExperienceForm from './forms/ExperienceForm'
+import SkillsForm from './forms/SkillsForm'
 function FormSection() {
 
   const [activeFormIndex, setActiveIndexForm]= useState(1)
@@ -28,6 +29,8 @@ function FormSection() {
         : activeFormIndex===3?
         //Work Experience
         <ExperienceForm enableNext={(v)=>{setEnableNext(v)}} />
+        : activeFormIndex ===4 ?  
+        <SkillsForm enableNext={(v)=> {setEnableNext(v)}} />
         : null
        }
        

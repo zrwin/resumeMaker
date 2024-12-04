@@ -17,6 +17,8 @@ function Edit() {
           
           
           setResumeInfo(resp.data.data[0]);
+          console.log("bye");
+          console.log(resumeInfo);
         }, (err)=>{
           console.log(err)
         })

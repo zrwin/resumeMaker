@@ -22,10 +22,14 @@ const formField = {
 function ExperienceForm({ enableNext }) {
     const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext)
     const [loading,setLoading] = useState(false);
-    const [experienceList, setExperienceList] = useState([
-        formField
-    ]);
+    const [experienceList, setExperienceList] = useState([]);
     const params =useParams();
+    // if(!resumeInfo?.experience){
+    //     setExperienceList([formField]);
+    // }
+    // if{
+    //     setExperienceList([formField]);
+    // }
     const handleChange = (ind, e) => {
         enableNext(false);
         const {name,value} = e.target; 
@@ -81,10 +85,24 @@ function ExperienceForm({ enableNext }) {
     
 
     useEffect(()=>{
+        // const experience = 
+        // setExperienceList()
+        if(resumeInfo?.experience){
+            setExperienceList((prev)=>{
+                const updatedExperienceList = resumeInfo?.experience;
+                
+            })
+        }
         setResumeInfo({
             ...resumeInfo, 
             experience: experienceList
         })
+        // else{
+        //     const experience = resumeInfo?.experience;
+        //     setResumeInfo({
+        //         ...res
+        //     })
+        // }
     }, [experienceList])
 
     return (
@@ -99,7 +117,7 @@ function ExperienceForm({ enableNext }) {
                         <div className='grid grid-cols-2 gap-3 border p-3 my-5 rounder-lg'>
                             <div>
                                 <label className='text-xs'>Position Title</label>
-                                <Input name='title' onChange={(e) => handleChange(ind, e)} />
+                                <Input name='title' defaultValue={item?.title} onChange={(e) => handleChange(ind, e)} />
                             </div>
                             <div>
                                 <label className='text-xs'>Company Name</label>

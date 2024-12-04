@@ -1,29 +1,28 @@
 import React from 'react'
 import dummyData from '@/data/dummyData.jsx'
 
-function WorkExperience({ resumeInfo }) {
+function WorkExperience({ resumeInfo, experience }) {
 
     if(!resumeInfo?.experience){
-        console.log('inside if')
-        resumeInfo = dummyData
+        console.log('inside if');
+        resumeInfo = dummyData;
         console.log(resumeInfo)
     }   
     
-    const experienceList = resumeInfo.experience;
+    else{
+        console.log("insedfaisjfklajtoiwecj nasoijrweoig j oifas")
+        console.log(resumeInfo);
 
-    // const convertToArray =(experience)=>{
-    //     Object.entries(experience).forEach((key, value)=>{
-    //         experienceList[key] = value;
-    //     })
-    // }
-    // convertToArray(resumeInfo?.experience);
+    }
+
+    
     return (
         <div className='my-5'>
             <h2 className='text-center font-bold text-sm mb-2'
                 style={{ color: resumeInfo?.themeColor }}>Professional Experience</h2>
             <hr className='border-[1.5px] my-2' />
             {
-            Object.values(experienceList).map((experience, ind) => (
+            Object.values(resumeInfo?.experience).map((experience, ind) => (
                 
                 <div key={ind}>
                     <h2 className='text-sm font-bold' style={{ color: resumeInfo?.themeColor }}>{experience?.title}</h2>
