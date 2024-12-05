@@ -5,6 +5,7 @@ import {Button} from '@/components/ui/button'
 import SummaryDetailsForm from './forms/SummaryDetailsForm'
 import ExperienceForm from './forms/ExperienceForm'
 import SkillsForm from './forms/SkillsForm'
+import EducationForm from './forms/EducationForm'
 function FormSection() {
 
   const [activeFormIndex, setActiveIndexForm]= useState(1)
@@ -30,8 +31,10 @@ function FormSection() {
         //Work Experience
         <ExperienceForm enableNext={(v)=>{setEnableNext(v)}} />
         : activeFormIndex ===4 ?  
-        <SkillsForm enableNext={(v)=> {setEnableNext(v)}} />
-        : null
+        <EducationForm enableNext={(v)=> {setEnableNext(v)}} />
+        : activeFormIndex ===5?
+        <SkillsForm enableNext={(v)=>{setEnableNext(v)}} />
+        :null
        }
        
 

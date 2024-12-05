@@ -22,14 +22,9 @@ const formField = {
 function ExperienceForm({ enableNext }) {
     const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext)
     const [loading,setLoading] = useState(false);
-    const [experienceList, setExperienceList] = useState([]);
+    const [experienceList, setExperienceList] = useState([formField]);
     const params =useParams();
-    // if(!resumeInfo?.experience){
-    //     setExperienceList([formField]);
-    // }
-    // if{
-    //     setExperienceList([formField]);
-    // }
+
     const handleChange = (ind, e) => {
         enableNext(false);
         const {name,value} = e.target; 
@@ -88,15 +83,27 @@ function ExperienceForm({ enableNext }) {
         // const experience = 
         // setExperienceList()
         if(resumeInfo?.experience){
-            setExperienceList((prev)=>{
-                const updatedExperienceList = resumeInfo?.experience;
-                
+            // setExperienceList((prev)=>{
+                const newList=[];
+                 Object.values(resumeInfo?.experience).map((item, ind)=>{
+                    newList.push(item);                    
+                 })
+                //  setExperienceList(newList);
+                setResumeInfo({
+                    ...resumeInfo,
+                    experience: newList
+                })
+                console.log(newList);
+                console.log("sankaaaaaaaaa");
+            // })
+        }
+        else{
+
+            setResumeInfo({
+                ...resumeInfo, 
+                experience: experienceList
             })
         }
-        setResumeInfo({
-            ...resumeInfo, 
-            experience: experienceList
-        })
         // else{
         //     const experience = resumeInfo?.experience;
         //     setResumeInfo({
