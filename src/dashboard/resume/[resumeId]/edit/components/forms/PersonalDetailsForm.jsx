@@ -34,7 +34,6 @@ function PersonalDetailsForm({enableNext}) {
       const data = {
         data: formData
       }
-      console.log("meee");
       
       GlobalApi.UpdateResumeDetail(params?.documentId, data).then(resp=>{
         console.log("bye");

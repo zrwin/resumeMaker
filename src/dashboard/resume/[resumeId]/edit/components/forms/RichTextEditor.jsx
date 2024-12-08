@@ -41,11 +41,8 @@ function RichTextEditor({ index, onRichEditorTextChange }) {
     const prompt = PROMPT.replace('{title}', resumeInfo.experience[index].title)
     const result = await chatSession.sendMessage(prompt);
     const resp = JSON.parse(result.response.text());
-    console.log(resp);
     setAiGeneratedSummaryList(JSON.parse(result.response.text()))
     setValue(resp.resume_summary.join("\n"))
-    console.log("hi");
-    console.log(resp.resume_summary);
     setLoading(false);
     
   }

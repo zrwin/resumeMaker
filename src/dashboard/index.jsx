@@ -18,7 +18,6 @@ function Dashboard() {
     GlobalApi.GetUserResumes(user.primaryEmailAddress.emailAddress)
     .then( resp => {
       setResumeList(resp.data.data);
-      // console.log(resp.data.data);
     },(err)=>{
       console.log(err);
     })

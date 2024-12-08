@@ -9,7 +9,6 @@ function Edit() {
     const params =useParams()
     
     const [resumeInfo, setResumeInfo]= useState();
-    console.log(params);
     useEffect(()=>{
       GlobalApi.GetUserResumeUsingResumeId(params?.documentId).then(resp=>{
           console.log(resp.data.data);
@@ -17,8 +16,6 @@ function Edit() {
           
           
           setResumeInfo(resp.data.data[0]);
-          console.log("bye");
-          console.log(resumeInfo);
         }, (err)=>{
           console.log(err)
         })

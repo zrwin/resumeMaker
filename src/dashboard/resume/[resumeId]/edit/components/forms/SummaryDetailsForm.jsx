@@ -21,11 +21,8 @@ function SummaryDetailsForm({enableNext}) {
     const GenerateSummaryFromAI = async()=>{
         setLoading(true);
         const PROMPT = prompt.replace('{jobTitle}', resumeInfo?.jobTitle);
-        console.log(PROMPT);
         const result =await chatSession.sendMessage(PROMPT);
-        console.log(JSON.parse(result.response.text()))
         setAiGeneratedSummaryList(JSON.parse(result.response.text()))
-        console.log(aiGeneratedSummaryList);
         setLoading(false);
     }
     useEffect(()=>{
@@ -44,7 +41,6 @@ function SummaryDetailsForm({enableNext}) {
             summary: summary
           }
         }
-        console.log("meee");
         
         GlobalApi.UpdateResumeDetail(params?.documentId, data).then(resp=>{
           enableNext(true);
@@ -53,7 +49,6 @@ function SummaryDetailsForm({enableNext}) {
   
         },(error)=>{
           setLoading(true);
-          console.log(data);
         })
     }   
 

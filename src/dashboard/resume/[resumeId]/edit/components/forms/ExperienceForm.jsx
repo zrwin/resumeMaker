@@ -22,7 +22,7 @@ const formField = {
 function ExperienceForm({ enableNext }) {
     const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext)
     const [loading,setLoading] = useState(false);
-    const [experienceList, setExperienceList] = useState([formField]);
+    const [experienceList, setExperienceList] = useState([{...formField}]);
     const params =useParams();
 
     const handleChange = (ind, e) => {
@@ -31,14 +31,12 @@ function ExperienceForm({ enableNext }) {
         const newEntries = experienceList.slice();
         newEntries[ind][name]= value;
         setExperienceList(newEntries);
-        setResumeInfo({
-            ...resumeInfo,
-            experienceList 
-        })
     }
 
     const AddExperience = () => {
-        setExperienceList([...experienceList, formField]);
+        console.log("addexperience()");
+        console.log(formField);
+        setExperienceList([...experienceList,{...formField}]);
     }
 
     const RemoveExperience= ()=>{
@@ -46,7 +44,6 @@ function ExperienceForm({ enableNext }) {
     }
 
     const handleRTEChange = (e, name ,ind)=>{
-        console.log(e.target.value);
         const newEntries= experienceList.slice();
         newEntries[ind][name]= e.target.value;
         setExperienceList(newEntries);
@@ -55,7 +52,6 @@ function ExperienceForm({ enableNext }) {
 
     const handleSubmit = (e)=>{
         setLoading(true);
-        console.log("HandleSubmit");
         setResumeInfo({
             ...resumeInfo,
             experienceList 
@@ -65,7 +61,7 @@ function ExperienceForm({ enableNext }) {
                 experience: {...experienceList}
             }
         }
-        console.log(data);
+        
         GlobalApi.UpdateResumeDetail(params?.documentId , data).then(resp=>{
             if(resp){
                 console.log("success");
@@ -82,7 +78,7 @@ function ExperienceForm({ enableNext }) {
     useEffect(()=>{
         // const experience = 
         // setExperienceList()
-        if(resumeInfo?.experience){
+        if(experienceList[0]['title'] == ''){
             // setExperienceList((prev)=>{
                 const newList=[];
                  Object.values(resumeInfo?.experience).map((item, ind)=>{
@@ -93,8 +89,6 @@ function ExperienceForm({ enableNext }) {
                     ...resumeInfo,
                     experience: newList
                 })
-                console.log(newList);
-                console.log("sankaaaaaaaaa");
             // })
         }
         else{
@@ -104,12 +98,7 @@ function ExperienceForm({ enableNext }) {
                 experience: experienceList
             })
         }
-        // else{
-        //     const experience = resumeInfo?.experience;
-        //     setResumeInfo({
-        //         ...res
-        //     })
-        // }
+        
     }, [experienceList])
 
     return (
@@ -145,7 +134,6 @@ function ExperienceForm({ enableNext }) {
                             <div>
                                 <label className='text-xs'>End Date</label>
                                 <Input type='date' name='endDate' onChange={(e) => handleChange(ind, e)} />
-
                             </div>
                             <div className="col-span-2">
                                 <RichTextEditor index={ind}  onRichEditorTextChange={(e)=>{handleRTEChange(e,"workSummary",ind)}}/>
