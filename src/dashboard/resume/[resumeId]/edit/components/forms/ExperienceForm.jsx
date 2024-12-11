@@ -35,12 +35,23 @@ function ExperienceForm({ enableNext }) {
 
     const AddExperience = () => {
         console.log("addexperience()");
-        console.log(formField);
         setExperienceList([...experienceList,{...formField}]);
     }
 
     const RemoveExperience= ()=>{
-        setExperienceList(experienceList=>experienceList.slice(0,-1))
+        if(experienceList[0].title == ''){
+            const newList=[];
+            Object.values(resumeInfo?.experience).map((item, ind)=>{
+               newList.push(item);                    
+            }) 
+            setExperienceList(newList);
+        }
+        else if(experienceList.length == 1){
+            setExperienceList([{...formField}]);
+        }
+        else{
+            setExperienceList(experienceList=>experienceList.slice(0,-1));
+        }   
     }
 
     const handleRTEChange = (e, name ,ind)=>{

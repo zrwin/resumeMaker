@@ -1,6 +1,11 @@
 import React from 'react'
+import dummyData from '../../../../../../data/dummyData'
+
 
 function PersonalDetailPreview({resumeInfo}) {
+  if(!resumeInfo?.firstName ){
+    resumeInfo = dummyData;
+  }
   return (
     <div>
         <h2 className='font-bold text-center text-xl'

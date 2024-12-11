@@ -41,8 +41,8 @@ export default{
             'and back-end systems.'
         }
     },
-    education:[
-        {
+    education:{
+       0: {
             id:1,
             universityName:'Western Illinois University',
             startDate:'Aug 2018',
@@ -51,7 +51,7 @@ export default{
             major:'Computer Science',
             description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud'
         },
-        {
+       1: {
             id:2,
             universityName:'Western Illinois University',
             startDate:'Aug 2018',
@@ -60,7 +60,7 @@ export default{
             major:'Computer Science',
             description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud'
         }
-    ],
+    },
     skills:[
         {
             id:1,

@@ -11,10 +11,6 @@ function ResumePreview() {
     const {resumeInfo, setResumeInfo} = useContext(ResumeInfoContext)
     const [experience, setExperience] = useState()
 
-    if(resumeInfo?.experience){
-        console.log("INse3asjfl redsuume preview");
-        console.log(resumeInfo?.experience);
-    }
 
     return (
         <div className='shadow-lg h-full p-14 border-t-[5px] '

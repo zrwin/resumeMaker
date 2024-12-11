@@ -4,17 +4,8 @@ import dummyData from '@/data/dummyData.jsx'
 function WorkExperience({ resumeInfo, experience }) {
 
     if(!resumeInfo?.experience){
-        console.log('inside if');
         resumeInfo = dummyData;
-        console.log(resumeInfo)
     }   
-    
-    else{
-        console.log("insedfaisjfklajtoiwecj nasoijrweoig j oifas")
-        console.log(resumeInfo);
-
-    }
-
     
     return (
         <div className='my-5'>
@@ -29,9 +20,7 @@ function WorkExperience({ resumeInfo, experience }) {
                     <h2 className='text-xs flex justify-between'> {experience?.companyName}, {experience?.city},
                         {experience?.state}
                         <span className='text-xs font-normal' style={{ color: resumeInfo?.themeColor }}>{experience?.startDate}-{experience?.currentlyWorking ? "Present" : experience?.endDate}</span></h2>
-                    {/* <p className='text-xs my-2'>
-                        {experience?.workSummary}
-                    </p> */}
+                    
                     <div className='text-sm' dangerouslySetInnerHTML={{
                         __html: experience?.workSummary
                     }}>
