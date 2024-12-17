@@ -61,26 +61,10 @@ export default{
             description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud'
         }
     },
-    skills:[
-        {
-            id:1,
-            name:'Angular',
-            rating:80,
-        },
-        {
-            id:1,
-            name:'React',
-            rating:100,
-        },
-        {
-            id:1,
-            name:'MySql',
-            rating:80,
-        },
-        {
-            id:1,
-            name:'React Native',
-            rating:100,
-        }
-    ]
+    skills:{
+        0: 'React',
+        1: 'Angular',
+        2: 'MySQL',
+        3: 'NodeJS'
+    }
 }

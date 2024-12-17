@@ -28,14 +28,14 @@ function PersonalDetailsForm({enableNext}) {
       )
     }
     
-    const onSave= (e)=>{
+    const onSave=async (e)=>{
       e.preventDefault();
       setLoading(true);
       const data = {
         data: formData
       }
       
-      GlobalApi.UpdateResumeDetail(params?.documentId, data).then(resp=>{
+     await GlobalApi.UpdateResumeDetail(params?.documentId, data).then(resp=>{
         console.log("bye");
         console.log(resp);
         enableNext(true);

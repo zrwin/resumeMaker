@@ -33,7 +33,7 @@ function SummaryDetailsForm({enableNext}) {
         enableNext(true);
     }, [summary])
 
-    const onSave = (e)=>{
+    const onSave = async(e)=>{
         e.preventDefault();
         setLoading(true);
         const data = {
@@ -42,7 +42,7 @@ function SummaryDetailsForm({enableNext}) {
           }
         }
         
-        GlobalApi.UpdateResumeDetail(params?.documentId, data).then(resp=>{
+    await GlobalApi.UpdateResumeDetail(params?.documentId, data).then(resp=>{
           enableNext(true);
           setLoading(false);
           toast("Details updated.")

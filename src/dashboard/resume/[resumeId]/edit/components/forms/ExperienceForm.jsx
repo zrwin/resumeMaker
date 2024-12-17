@@ -61,7 +61,7 @@ function ExperienceForm({ enableNext }) {
         
     }
 
-    const handleSubmit = (e)=>{
+    const handleSubmit = async (e)=>{
         setLoading(true);
         setResumeInfo({
             ...resumeInfo,
@@ -73,7 +73,7 @@ function ExperienceForm({ enableNext }) {
             }
         }
         
-        GlobalApi.UpdateResumeDetail(params?.documentId , data).then(resp=>{
+       await GlobalApi.UpdateResumeDetail(params?.documentId , data).then(resp=>{
             if(resp){
                 console.log("success");
                 enableNext(true);
@@ -87,14 +87,18 @@ function ExperienceForm({ enableNext }) {
     
 
     useEffect(()=>{
-        // const experience = 
-        // setExperienceList()
-        if(experienceList[0]['title'] == ''){
-            // setExperienceList((prev)=>{
-                const newList=[];
-                 Object.values(resumeInfo?.experience).map((item, ind)=>{
-                    newList.push(item);                    
-                 })
+        if(experienceList[0]['title'] == '' ){
+            const newList=[];    
+            if(!resumeInfo?.experience){
+                console.log("instasdlkjf;ajsdk fjasdk;lf jasdkflsdajf klasdj fkl;sadj f");
+                    newList.push(formField);
+                 
+                }
+                else{
+                     Object.values(resumeInfo?.experience).map((item, ind)=>{
+                        newList.push(item);                    
+                     })
+                }
                 //  setExperienceList(newList);
                 setResumeInfo({
                     ...resumeInfo,
@@ -103,7 +107,6 @@ function ExperienceForm({ enableNext }) {
             // })
         }
         else{
-
             setResumeInfo({
                 ...resumeInfo, 
                 experience: experienceList

@@ -2,9 +2,10 @@ import React from 'react'
 import dummyData from '../../../../../../data/dummyData'
 
 function EducationalPreview({resumeInfo}) {
-    if(!resumeInfo?.education){
+    if(!resumeInfo?.education || resumeInfo?.education[0].universityName == ''){
         resumeInfo = dummyData
     }
+    
   return (
 
     < div className='my-5'>
