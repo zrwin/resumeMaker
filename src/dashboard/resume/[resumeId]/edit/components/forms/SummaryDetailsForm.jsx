@@ -63,6 +63,7 @@ function SummaryDetailsForm({enableNext}) {
                     <Button onClick={()=>{GenerateSummaryFromAI()}} className="border-primary text-primary flex gap-2" type="button" size="sm" variant="outline"><Bot/>Generate from AI</Button>
             </div>
             <Textarea 
+            defaultValue={resumeInfo?.summary}
             onChange={(e)=>{setSummary(e.target.value)}}
             className="mt-5" />
                     <div className='mt-7 '>

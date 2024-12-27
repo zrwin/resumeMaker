@@ -25,6 +25,17 @@ function EducationForm() {
     const [loading,setLoading] = useState(false);
     const param = useParams();
   
+    useEffect(()=>{
+        const newList = [];
+        if(educationList[0].universityName == '' && resumeInfo?.education){
+            Object.values(resumeInfo?.education).map((item, ind)=>{
+               newList.push(item);                    
+            }) 
+            setEducationList(newList);
+        }
+        
+    }, [resumeInfo?.education])
+    
     const handleSubmit = async (e )=>{
         console.log('handle submit');
         setLoading(true);

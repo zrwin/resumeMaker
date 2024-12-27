@@ -25,12 +25,25 @@ function ExperienceForm({ enableNext }) {
     const [experienceList, setExperienceList] = useState([{...formField}]);
     const params =useParams();
 
+    useEffect(()=>{
+        const newList = [];
+        if(experienceList[0].title == '' && resumeInfo?.experience){
+            const newList=[];
+            Object.values(resumeInfo?.experience).map((item, ind)=>{
+               newList.push(item);                    
+            }) 
+            setExperienceList(newList);
+        }
+        
+    }, [resumeInfo?.experience])
+
     const handleChange = (ind, e) => {
         enableNext(false);
         const {name,value} = e.target; 
         const newEntries = experienceList.slice();
         newEntries[ind][name]= value;
         setExperienceList(newEntries);
+        console.log(experienceList);
     }
 
     const AddExperience = () => {
@@ -58,7 +71,7 @@ function ExperienceForm({ enableNext }) {
         const newEntries= experienceList.slice();
         newEntries[ind][name]= e.target.value;
         setExperienceList(newEntries);
-        
+        console.log(experienceList);
     }
 
     const handleSubmit = async (e)=>{
@@ -98,6 +111,7 @@ function ExperienceForm({ enableNext }) {
                      Object.values(resumeInfo?.experience).map((item, ind)=>{
                         newList.push(item);                    
                      })
+                     console.log('hihihihihihi')
                 }
                 //  setExperienceList(newList);
                 setResumeInfo({
@@ -131,26 +145,26 @@ function ExperienceForm({ enableNext }) {
                             </div>
                             <div>
                                 <label className='text-xs'>Company Name</label>
-                                <Input name='companyName' onChange={(e) => handleChange(ind, e)} />
+                                <Input name='companyName' defaultValue={item?.companyName} onChange={(e) => handleChange(ind, e)} />
                             </div>
                             <div>
                                 <label className='text-xs'>City</label>
-                                <Input name='city' onChange={(e) => handleChange(ind, e)} />
+                                <Input name='city' defaultValue={item?.city} onChange={(e) => handleChange(ind, e)} />
                             </div>
                             <div>
                                 <label className='text-xs'>State</label>
-                                <Input name='state' onChange={(e) => handleChange(ind, e)} />
+                                <Input name='state' defaultValue={item?.state} onChange={(e) => handleChange(ind, e)} />
                             </div>
                             <div >
                                 <label className='text-xs'>Start Date</label>
-                                <Input type='date' name='startDate' onChange={(e) => handleChange(ind, e)} />
+                                <Input type='date' name='startDate' defaultValue={item?.startDate} onChange={(e) => handleChange(ind, e)} />
                             </div>
                             <div>
                                 <label className='text-xs'>End Date</label>
-                                <Input type='date' name='endDate' onChange={(e) => handleChange(ind, e)} />
+                                <Input type='date' name='endDate' defaultValue={item?.endDate} onChange={(e) => handleChange(ind, e)} />
                             </div>
                             <div className="col-span-2">
-                                <RichTextEditor index={ind}  onRichEditorTextChange={(e)=>{handleRTEChange(e,"workSummary",ind)}}/>
+                                <RichTextEditor index={ind} defaultValue={item?.workSummary}  onRichEditorTextChange={(e)=>{handleRTEChange(e,"workSummary",ind)}}/>
                             </div>
                         </div>
                     </div>

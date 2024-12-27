@@ -6,7 +6,7 @@ import { ResumeInfoContext } from '../../../../../../context/ResumeInfoContext';
 import { useParams } from 'react-router-dom';
 import GlobalApi from '../../../../../../../service/GlobalApi';
 
-const formSkills =['React','Angular'];
+const formSkills =['Skill1','Skill2'];
 
 function SkillsForm() {
 
@@ -14,6 +14,18 @@ function SkillsForm() {
   const {resumeInfo, setResumeInfo} = useContext(ResumeInfoContext);
   const [loading,setLoading] = useState(false);
   const params = useParams();
+  
+  // useEffect(()=>{
+  //   if(resumeInfo?.skills && skills[0] == 'Skill1')
+  //   {
+  //     const newList = [];
+  //     Object.values(resumeInfo?.skills).map((item, ind)=>{
+  //       newList.push(item);
+  //     })
+  //     setSkills(newList);
+  //   }
+  //  }, [])
+  
   const AddSkill =()=>{
     console.log('addskill');
     setSkills([...skills, '']);
@@ -53,11 +65,21 @@ function SkillsForm() {
 
 
 
-  useEffect(()=>{
-    
-    setResumeInfo({...resumeInfo, skills: {...skills}});
+  useEffect(() => {
 
-  },[skills])
+    
+    const updatedSkills = skills.reduce((obj, skill, index) => {
+      obj[index] = skill; // Convert array back to object
+      return obj;
+    }, {});
+    
+    
+
+    setResumeInfo((prev) => ({
+      ...prev,
+      skills: updatedSkills, // Update as an object
+    }));
+  }, [skills]);
 
   console.log(skills);
   return (
