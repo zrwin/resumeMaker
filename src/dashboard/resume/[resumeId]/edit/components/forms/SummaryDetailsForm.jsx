@@ -16,12 +16,13 @@ function SummaryDetailsForm({enableNext}) {
     const params= useParams();
     const [loading,setLoading] = useState(false);
     const [aiGeneratedSummaryList, setAiGeneratedSummaryList]= useState([]);
-    const prompt="Job Title: {jobTitle} , Depends on job title give me list of  summery for 3 experience level, Mid Level and Freasher level in 3 -4 lines in array format, With summery and experience_level Field in JSON Format"
+    const prompt="Job Title: {jobTitle} , Depends on job title give me list of  summery for 3 experience level, Mid Level and Freasher level in 3 -4 lines in array format"
 
     const GenerateSummaryFromAI = async()=>{
         setLoading(true);
         const PROMPT = prompt.replace('{jobTitle}', resumeInfo?.jobTitle);
         const result =await chatSession.sendMessage(PROMPT);
+        console.log(result.response.text());
         setAiGeneratedSummaryList(JSON.parse(result.response.text()))
         setLoading(false);
     }

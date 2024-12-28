@@ -33,6 +33,26 @@ body {
   min-height: 100vh;
 }
 
+@media print{
+  #not-print{ 
+    display: none;
+  }
+  #print-area{
+    display: block;
+  }
+
+  body{
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+}
+
+@page{
+  size: auto;
+  margin: 0;
+}
+
 input[type="date"]::-webkit-calendar-picker-indicator {
 
   

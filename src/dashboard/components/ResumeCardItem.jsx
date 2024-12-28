@@ -1,5 +1,5 @@
-import { Notebook } from 'lucide-react'
-import React from 'react'
+import { Cross, CrossIcon, Delete, Notebook, X } from 'lucide-react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import {
     DropdownMenu,
@@ -10,9 +10,19 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { MoreVertical } from 'lucide-react';
+import { ResumeInfoContext } from '../../context/ResumeInfoContext';
 
 function ResumeCardItem({ resume }) {
+
+    
+
+    const HandleDelete =(e)=>{
+        
+        console.log('handleDelete');
+    }
+
     return (
+        <div>
 
         <Link to={'/dashboard/resume/' + resume?.documentId + "/edit"}>
             <div className='p-14 mx-2 bg-gradient-to-b
@@ -23,39 +33,31 @@ function ResumeCardItem({ resume }) {
                 style={{
                     borderColor: resume?.themeColor
                 }}
+            
             >
                 <div className='ml-2  flex 
                   items-center justify-center h-[120px]'>
                     <img src="/src/assets/resume.png" width={100} height={100} />
                 </div>
             </div>
-            <div className='mx-2 border p-3 flex justify-center rounded-b-lg shadow-lg'
-                style={{
-                    background: resume?.themeColor
-                }}>
+        </Link>
+            <div className='mx-2 border p-3 flex justify-center rounded-b-lg shadow-lg'>
 
-                <h2 className='text-sm text-center mx-2 flex '>
+                <h2 className='flex items-center text-sm text-center mx-2 flex '>
                     {resume.title}
                 </h2>
-                <DropdownMenu>
-                       
-                            <DropdownMenuTrigger className="p-0 bg-white">
-                            <MoreVertical size={15} color='blue'/>
-                            </DropdownMenuTrigger>
-                       
-                    <DropdownMenuContent>
-                        <DropdownMenuLabel>My Account</DropdownMenuLabel>
-                        <DropdownMenuSeparator />
-                        <DropdownMenuItem>Profile</DropdownMenuItem>
-                        <DropdownMenuItem>Billing</DropdownMenuItem>
-                        <DropdownMenuItem>Team</DropdownMenuItem>
-                        <DropdownMenuItem>Subscription</DropdownMenuItem>
+            
+                <DropdownMenu > 
+                    <DropdownMenuTrigger onClick={(e)=>{HandleDelete()}} className='bg-white p-1 text-black border-sky-300 '>:</DropdownMenuTrigger>
+                    <DropdownMenuContent className='p-0 m-0 '>
+                        <DropdownMenuItem className='flex justify-center p-2'  onClick={(e)=>{HandleDelete()}}>Delete &nbsp;<X size={15}/></DropdownMenuItem>
                     </DropdownMenuContent>
                 </DropdownMenu>
-            </div >
+            </div>
+        </div>
 
 
-        </Link>
+        
     )
 }
 

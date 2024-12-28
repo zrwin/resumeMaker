@@ -12,7 +12,7 @@ import { ResumeInfoContext } from '../../../../../context/ResumeInfoContext'
 import { useParams } from 'react-router-dom'
 import GlobalApi from '../../../../../../service/GlobalApi'
 
-function ThemeColor() {
+function ThemeColor({enableNext}) {
     const colors=[
       "#FF5733", "#33FF57", "#3357FF", "#FF33A1", "#A133FF",
       "#33FFA1", "#FF7133", "#71FF33", "#7133FF", "#FF3371",
@@ -23,7 +23,7 @@ function ThemeColor() {
     const {resumeInfo,setResumeInfo}=useContext(ResumeInfoContext);
     const [selectedColor,setSelectedColor]=useState();
     const {documentId}=useParams();
-
+    
     const OnColorSelect = (item)=>{
       console.log(item);
       setSelectedColor(item);
@@ -31,19 +31,22 @@ function ThemeColor() {
         ...resumeInfo,
         themeColor: item
       });
-      const data = {
-        data : {
-          themeColor : selectedColor
-        }
+      if(enableNext){
+
+          const data = {
+            data : {
+              themeColor : selectedColor
+            }
+          }
+         GlobalApi.UpdateResumeDetail(documentId, data).then((resp)=>{
+            if(resp){
+              console.log(resp);
+              console.log('success');
+            }
+          }, (err)=>{
+            console.log(err);
+          })
       }
-     GlobalApi.UpdateResumeDetail(documentId, data).then((resp)=>{
-        if(resp){
-          console.log(resp);
-          console.log('success');
-        }
-      }, (err)=>{
-        console.log(err);
-      })
 
     }
 

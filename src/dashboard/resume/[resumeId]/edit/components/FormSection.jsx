@@ -7,17 +7,18 @@ import ExperienceForm from './forms/ExperienceForm'
 import SkillsForm from './forms/SkillsForm'
 import EducationForm from './forms/EducationForm'
 import ViewResume from '../../../../../my-resume/documentId/view'
-import { useParams } from 'react-router-dom'
+import { Navigate, useParams } from 'react-router-dom'
 import ThemeColor from './ThemeColor'
 function FormSection() {
 
   const [activeFormIndex, setActiveIndexForm]= useState(1)
   const [enableNext ,setEnableNext]  = useState(true)  
   const params = useParams();
+  
   return (
     <div>
       <div className='flex justify-between'>
-        <ThemeColor/>
+        <ThemeColor enableNext={enableNext}/>
         <div className='flex gap-2'>
         {activeFormIndex>1 && <Button variant='secondary' onClick={()=>{setActiveIndexForm(activeFormIndex - 1)}}><ArrowLeft/></Button>}
         <Button variant="secondary" disabled={!enableNext} onClick={()=>{setActiveIndexForm(activeFormIndex + 1)}}>Next <ArrowRight/></Button>
@@ -39,7 +40,7 @@ function FormSection() {
         : activeFormIndex ===5?
         <SkillsForm enableNext={(v)=>{setEnableNext(v)}} />
         : activeFormIndex === 6?
-        <ViewResume documentId={params?.documentId}/> 
+        <Navigate to={'/my-resume/resume/'+params?.documentId+'/view'} />
         : null
        }
        

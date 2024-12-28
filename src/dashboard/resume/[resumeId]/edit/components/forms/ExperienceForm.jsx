@@ -7,6 +7,7 @@ import { LoaderCircle } from 'lucide-react';
 import { toast } from 'sonner';
 import GlobalApi from '../../../../../../../service/GlobalApi';
 import { useParams } from 'react-router-dom';
+import dummyData from '../../../../../../data/dummyData';
 
 const formField = {
     title: '',
@@ -27,15 +28,15 @@ function ExperienceForm({ enableNext }) {
 
     useEffect(()=>{
         const newList = [];
-        if(experienceList[0].title == '' && resumeInfo?.experience){
+        if(experienceList[0].title == '' ){
             const newList=[];
-            Object.values(resumeInfo?.experience).map((item, ind)=>{
+            Object.values(dummyData?.experience).map((item, ind)=>{
                newList.push(item);                    
             }) 
             setExperienceList(newList);
         }
         
-    }, [resumeInfo?.experience])
+    }, [])
 
     const handleChange = (ind, e) => {
         enableNext(false);
