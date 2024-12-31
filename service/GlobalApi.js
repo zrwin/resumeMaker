@@ -3,7 +3,7 @@ import axios from "axios";
 const API_KEY = import.meta.env.VITE_STRAPI_API_KEY;
 
 const axiosClient = axios.create({
-    baseURL: 'http://localhost:1337/api/',
+    baseURL: import.meta.env.VITE_BASE_URL+'api/',
     headers: {
         'Content-Type' : 'application/json',
         'Authorization': `Bearer ${API_KEY}`
@@ -18,9 +18,12 @@ const GetUserResumeUsingResumeId = (resumeId)=>axiosClient.get('/user-resumes?fi
 
 const UpdateResumeDetail = (id, data) =>axiosClient.put('/user-resumes/'+id, data)
 
+const DeleteResumeById= (id) => axiosClient.delete('/user-resumes/'+id)
+
 export default{
     CreateNewResume,
     GetUserResumes,
     GetUserResumeUsingResumeId,
-    UpdateResumeDetail
+    UpdateResumeDetail,
+    DeleteResumeById
 }

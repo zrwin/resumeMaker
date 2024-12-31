@@ -1,15 +1,19 @@
 import React from 'react'
 import { Button } from "@/components/ui/button"
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { UserButton, useUser } from '@clerk/clerk-react'
 
 function Header() {
 
   const { user, isSignedIn } = useUser();
+  const navigate =useNavigate();
+  const handleImage =()=>{
+    navigate('/');
+  }
 
   return (
     <div className='px-1 p-2 flex justify-between shadow-md text-black'>
-      <img className='p-1' src="/logo.svg" height={40} width={40} />
+      <img onClick={handleImage} className='p-1' src="/logo.svg" height={40} width={40} />
 
       {
         isSignedIn ?

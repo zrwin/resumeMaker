@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -27,10 +27,16 @@ function ThemeColor({enableNext}) {
     const OnColorSelect = (item)=>{
       console.log(item);
       setSelectedColor(item);
+      console.log(selectedColor);
+      
+    }
+
+    useEffect(()=>{
       setResumeInfo({
         ...resumeInfo,
-        themeColor: item
+        themeColor: selectedColor
       });
+      console.log(selectedColor);
       if(enableNext){
 
           const data = {
@@ -38,7 +44,7 @@ function ThemeColor({enableNext}) {
               themeColor : selectedColor
             }
           }
-         GlobalApi.UpdateResumeDetail(documentId, data).then((resp)=>{
+      GlobalApi.UpdateResumeDetail(documentId, data).then((resp)=>{
             if(resp){
               console.log(resp);
               console.log('success');
@@ -48,7 +54,7 @@ function ThemeColor({enableNext}) {
           })
       }
 
-    }
+    }, [selectedColor])
 
   return (
     <div>
