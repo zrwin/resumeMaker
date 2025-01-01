@@ -21,7 +21,7 @@ import {
   } from "@/components/ui/alert-dialog"
 import GlobalApi from '../../../service/GlobalApi'
 import { toast } from 'sonner'
-
+import resumePng from '../../assets/resume.png'
   
 
 function ResumeCardItem({ resume , refreshData}) {
@@ -62,7 +62,7 @@ function ResumeCardItem({ resume , refreshData}) {
               className="ml-2  flex 
                   items-center justify-center h-[120px]"
             >
-              <img src="/src/assets/resume.png" width={100} height={100} />
+              <img src={resumePng} width={100} height={100} />
             </div>
           </div>
         </Link>
